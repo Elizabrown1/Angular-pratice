@@ -1,0 +1,65 @@
+<div class="vh-100 py-5" style="background-color: #eee;">
+<div class="container">
+      <div class="col-lg-6 col--4 mx-auto mt-5 bg-light shadow p-5" style="border-radius: 1rem;">
+    <mat-tab-group mat-align-tabs="center" >
+      <mat-tab label="Add Todo" style="color: #9A616D;">
+        <h4 class=" text-center py-2 mt-2" style="color: #9A616D;">Add Todo</h4>
+         <div>
+           <input type="text" placeholder="Todo Name" class="form-control" [(ngModel)]="todo">
+           <button class="btn btn-outline-dark w-100 mt-2" (click)="addTodo()">Add Todo</button>
+           
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Check Todo" style="color: #9A616D;">
+        <table class="table mb-0 text-black" >
+          <thead>
+            <tr class="">
+              <th scope="col">S/N</th>
+              <th scope="col" class="text-center">Task</th>
+              <th scope="col" class="text-center">Time</th>
+              <th scope="col" class="text-center">Edit</th>
+              <th scope="col" class="text-center">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let todo_index = index; let all_todo of todoArray">
+              <!-- <td>
+                <span [class]="todo_index+1 <=2 ? 'text-danger':'text-success'"></span>
+              </td> -->
+              <td>
+                <div>{{todo_index+1}} </div>
+              </td>
+              <td>
+                <div class="text-center"> {{all_todo.todo}}</div>
+              </td>
+              <td>
+                <div  class="text-center text-success">02-09-2022</div>
+              </td>
+              <td>
+                <div  class="text-center text-primary"
+                (click)="editTodo(todo_index)">
+                <span class="fa fa-pen"></span>
+              </div>
+              </td>
+              <td>
+                <div class="text-center text-danger" (click)="deleteTask(todo_index)">
+                  <span class="fa fa-trash"></span> 
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      
+      
+      </mat-tab>
+    </mat-tab-group>
+    </div>
+    </div>
+  </div>
+    
+   
+
+    
+  

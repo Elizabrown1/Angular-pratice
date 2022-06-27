@@ -1,0 +1,116 @@
+
+<div class="col-6 bg-light align-center p-5 mx-auto mt-5 shadow" style="border-radius: 30px; margin-top: 60px; ">
+
+<form action="" [formGroup]="userForm" class="row g-3 needs-validation ">
+  <div class="col-md-4">
+    <label  class="form-label">name</label>
+    <input type="text" class="form-control"formControlName="name" 
+    [class.is-valid]="userForm.get('name')?.valid && userForm.get('name').touched"
+    [class.is-invalid]="userForm.get('name')?.invalid && userForm.get('name').touched">
+   
+    <div *ngIf="userForm.get('name')?.invalid">
+      <span class="text-danger" *ngIf="userForm.get('name')?.errors.required && userForm.get('name').touched">
+        Input can not be empty
+      </span>
+      
+  </div>
+  </div>
+
+  <div class="col-md-4">
+    <label  class="form-label">phone number</label>
+    <input type="text" class="form-control" formControlName="phone_no" formControlName="phone_no" 
+    [class.is-valid]="userForm.get('phone_no')?.valid && userForm.get('name').touched" 
+    [class.is-invalid]="userForm.get('phone_no')?.invalid && userForm.get('name').touched">
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+    <div *ngIf="userForm.get('phone_no')?.invalid">
+        <span *ngIf="userForm.get('phone_no')?.errors ?.['required'] && userForm.get('phone_no')?.touched">
+           Input can not be empty
+        </span>
+        <span *ngIf="userForm.get('phone_no')?.errors ?.['minLength']">
+            Minimum length is 4
+         </span>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">email</label>
+    <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend">@</span>
+      <input type="text" class="form-control" id="validationCustomUsername" ormControlName="email" aria-describedby="inputGroupPrepend" required>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationCustom03" class="form-label">Address</label>
+    <input type="text" class="form-control" formControlName="name" id="validationCustom03" required>
+    <div class="invalid-feedback">
+      Please provide your address
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">State</label>
+    <select class="form-select" id="validationCustom04" required>
+      <option selected disabled value="">Choose...</option>
+      <option>...</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid state.
+    </div>
+  </div>
+  <!-- <div class="col-md-3">
+    <label for="validationCustom05" formControlName="password" class="form-label">password</label>
+    <input type="text" class="form-control" id="validationCustom05" required>
+    <div class="invalid-feedback">
+      Please provide a valid password
+    </div>
+  </div> -->
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-outline-success" (click)="submitForm()" [disabled]="userForm.invalid" type="submit">Submit form</button>
+  </div>
+</form>
+</div>
+<!-- <div></div> -->
+
+
+<div class=" col-6 bg-light mb-5 align-center p-5 mx-auto mt-5 shadow" style="border-radius: 30px; margin-top: 60px; ">
+  <!-- <div class="col-7 mx-auto shadow"> -->
+    <form #usersForm="ngForm">
+      <h3 class="display-4 text-center">Template Driven Form</h3>
+      <input type="text" class="form-control mb-3" placeholder="Input your name" [(ngModel)]="name" #userName="ngModel" minlength="4" required [class.is-invalid]="userName.invalid && userName.dirty" [class.is-valid]="userName.valid" name="name">
+       <div *ngIf="userName.invalid && userName.dirty">
+        <span class="text-danger" *ngIf="userName.errors.required">Input cannot be empty</span>
+        <span class="text-danger" *ngIf="userName.errors.minlength">Minimum length is 4</span>
+      </div>
+
+
+      <input type="text" class="form-control mb-3" name="user_number" placeholder="Input your phone" [(ngModel)]="phone_no" #number="ngModel" 
+      [class.is-invalid]="number.invalid && number.dirty" 
+      [class.is-valid]="number.valid" appPhone>
+
+      <div *ngIf="number.invalid && number.dirty">
+        <span class="text-danger" *ngIf="number.errors.minLength">Minimum length is 4</span>
+        <span class="text-danger" *ngIf="number.errors.lengthErr">Minimum length is 14</span>
+      </div>
+
+
+
+      <input type="email" class="form-control mb-3" name="email" placeholder="Input your name" [(ngModel)]="email" name="" id="">
+      <button class="btn btn-success" [disabled]="usersForm.invalid">Submit</button>
+    </form>
+  <!-- </div>  -->
+</div>

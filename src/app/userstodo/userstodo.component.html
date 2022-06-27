@@ -1,0 +1,33 @@
+<div class="vh-100 py-5" style="background-color: #eee;">
+    <div class="container">
+      <div class="col-lg-6 col--4 mx-auto mt-5 bg-light shadow p-5" style="border-radius: 1rem;">
+          <h1 class="mt-5">Users</h1>
+  <a routerLink="add" class="btn btn-sm btn-success mb-2">Add User</a>
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th style="width: 30%">First Name</th>
+              <th style="width: 30%">Last Name</th>
+              <th style="width: 30%">Username</th>
+              <th style="width: 10%">email</th>
+          </tr>
+      </thead>
+      <tbody *ngFor="let todo of userTodos">
+          <tr>
+              <td>{{todo.id}}</td>
+              <td>{{todo.name}}</td>
+              <td>{{todo.title}}</td>
+              <td [class]="todo.completed == true ? 'text-success' : 'text-danger' " style="white-space: nowrap">{{todo.completed == true ? "Completed" : "Incomplete"}}
+            </td>
+          </tr>
+          <!-- <tr >
+              <td colspan="4" class="text-center">
+                  <span class="spinner-border spinner-border-lg align-center"></span>
+              </td>
+          </tr> -->
+      </tbody>
+  </table>
+      </div>
+    </div>
+  </div>
+  

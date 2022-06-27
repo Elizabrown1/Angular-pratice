@@ -1,0 +1,21 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            Parent Component
+            <input type="text" class="form-control" placeholder="student name" [(ngModel)]="name">
+            <p>From Child {{getChild}}</p>
+            <button></button>
+        </div>
+        <div class="col-6 mx-auto">
+            <app-child [nameOfStudent]="name" (emitToParent)="getFromChild($event)"></app-child>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <app-sibling-one></app-sibling-one>
+        </div>
+        <div class="col-6">
+            <app-sibling-two></app-sibling-two>
+        </div>
+    </div>
+</div>
